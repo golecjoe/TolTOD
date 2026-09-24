@@ -182,9 +182,9 @@ for obsnum in all_obsnums:
 		plt.close()
 
 
-		tmpqcbasedir_init = Path(output_dir_base / f'outputs/obs_{tmpobsnum}/qc/nw_{tmpnw}/cmresid_tods/')
-		tmpqcbasedir_init.mkdir(parents=True, exist_ok=True)
-		make_cmresid_plots(tmptod,plotdir=tmpqcbasedir_init)
+		# tmpqcbasedir_init = Path(output_dir_base / f'outputs/obs_{tmpobsnum}/qc/nw_{tmpnw}/cmresid_tods/')
+		# tmpqcbasedir_init.mkdir(parents=True, exist_ok=True)
+		# make_cmresid_plots(tmptod,plotdir=tmpqcbasedir_init)
 
 
 		print('Running Spike Finder')
@@ -212,7 +212,7 @@ for obsnum in all_obsnums:
 		print('Fraction of TODs = ',len(np.where(numspikes>med_spikenum_thresh*np.median(numspikes))[0])/tmptod['ndet'])
 
 
-		numberofspikescut = numspikes < med_spikenum_thresh*np.median(numspikes)
+		numberofspikescut = numspikes <=med_spikenum_thresh*np.median(numspikes)
 		plt.figure()
 		plt.hist(numspikes,bins=np.linspace(0,max(numspikes)/10,50))
 		plt.axvline(np.median(numspikes),c='k')
