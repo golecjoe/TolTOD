@@ -69,7 +69,7 @@ for obsnum in all_obsnums:
 
 
 		print('Reading in the file')
-		tmptod = read_in_nw_from_netCDF(tmpfilepath,tmpnw)
+		tmptod = read_in_nw_from_netCDF(initialncfilepath,tmpnw)
 		print('Finished reading in the file')
 
 		totalpsdcuts = tmptod['apt_uid']>-1
