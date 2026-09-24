@@ -1,0 +1,65 @@
+[reader]
+signal_variable = "signal"
+network_variable = "apt_nw"
+time_variable = "TelTime"
+raw_detector_sample_rate_variable = "SAMPRATE"
+downsample_factor = 1
+sample_dimension = "n_pts"
+detector_dimension = "n_dets"
+validate_time_order = true
+
+[detection]
+source_flag_variable = "flags"
+source_flag_nonzero_is_bad = true
+require_source_flags = false
+permanent_source_flag_fraction = 0.95
+
+dropout_value = 0.0
+dropout_atol = 0.0
+dropout_min_seconds = 0.20
+flatline_atol = 0.0
+flatline_min_seconds = 0.50
+
+spike_sigma = 8.0
+spike_narrow_sigma_seconds = 0.008
+spike_wide_sigma_seconds = 0.08
+spike_template_truncate = 3.0
+spike_max_width_seconds = 0.12
+
+jump_sigma = 10.0
+jump_filter_width_seconds = 0.40
+jump_filter_pad_widths = 2
+jump_spike_ratio = 0.50
+
+correlated_detector_fraction = 0.10
+correlated_min_detectors = 3
+correlated_min_seconds = 0.04
+
+excess_issue_fraction = 0.10
+excess_noise_factor = 5.0
+minimum_scale = 1.0e-12
+detector_chunk_size = 64
+
+[qc]
+drastic_sigma = 3.0
+histogram_max_bins = 40
+figure_dpi = 160
+exclude_persistent_source_flags = true
+
+[remediation]
+spike_padding_seconds = 0.08
+jump_padding_seconds = 0.08
+other_padding_seconds = 0.0
+noise_context_seconds = 2.0
+minimum_noise_samples = 20
+jump_level_context_seconds = 0.40
+minimum_jump_level_samples = 5
+detector_bad_fraction = 0.10
+noise_seed = 0
+
+[remediation_qc]
+context_seconds = 10.0
+max_spike_examples = 6
+max_jump_examples = 6
+max_other_examples = 4
+figure_dpi = 120
