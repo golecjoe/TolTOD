@@ -34,6 +34,8 @@ spikethresh = 8 # number of MAD
 spikeendtrim = 50 # number of samples at start/end of TOD to ignore in spike filter (this prevents detecting ringing as spikes)
 med_spikenum_thresh = 10. # factors of median above the median number of spikes to threshold on
 
+longincidentcutnum = 0
+
 # Define Jump Cut Parameters
 
 jumpthresh = 10.
@@ -77,6 +79,7 @@ for obsnum in all_obsnums:
 		jump_cut_mask = tmptod['apt_uid']>-1
 		numberofspikescut = tmptod['apt_uid']>-1
 		totalcmcuts = tmptod['apt_uid']>-1
+		totaldespike = tmptod['apt_uid']>-1
 
 		if tmptod['ndet']==0:
 			continue
@@ -287,12 +290,18 @@ for obsnum in all_obsnums:
 			despikecutmask = replacesampfracs<despikecutthresh
 
 			print('Fraction of Detectors cut in despiking = ',len(tmptod['apt_uid'][~despikecutmask])/len(tmptod['apt_uid']))
+
+			longincidentthreshmask = tmplongdespikecount<longincidentcutnum
+			print(f'Fraction of Detectors with an incidence >{longincidentthresh} seconds = ',np.sum(~longincidentthreshmask)/len(tmptod['apt_uid']))
+
+			totaldespike = despikecutmask & longincidentthreshmask
+
 			plt.figure()
-			plt.plot(tmptod['apt_x_t'][despikecutmask],tmptod['apt_y_t'][despikecutmask],'.',c='g')
-			plt.plot(tmptod['apt_x_t'][~despikecutmask],tmptod['apt_y_t'][~despikecutmask],'.',c='r')
+			plt.plot(tmptod['apt_x_t'][totaldespike],tmptod['apt_y_t'][totaldespike],'.',c='g')
+			plt.plot(tmptod['apt_x_t'][~totaldespike],tmptod['apt_y_t'][~totaldespike],'.',c='r')
 			plt.xlabel('Detector X Pos')
 			plt.ylabel('Detector Y Pos')
-			frac_cut = np.sum(~despikecutmask) / len(despikecutmask)
+			frac_cut = np.sum(~totaldespike) / len(totaldespike)
 
 			plt.text(
 				0.98,
@@ -318,7 +327,7 @@ for obsnum in all_obsnums:
 			tmpqcbasedir_init = Path(output_dir_base / f'outputs/obs_{tmpobsnum}/qc/nw_{tmpnw}/jumpfilt_tods_iter{iteration}/')
 			tmpqcbasedir_init.mkdir(parents=True, exist_ok=True)
 
-			make_jumpfiltered_plots(tmpjumpfilt,tmptod,plotdir=tmpqcbasedir_init,thresh=jumpthresh,pad=4)
+			# make_jumpfiltered_plots(tmpjumpfilt,tmptod,plotdir=tmpqcbasedir_init,thresh=jumpthresh,pad=4)
 
 			numjumps = []
 			for i in range(tmptod['ndet']):
@@ -453,7 +462,7 @@ for obsnum in all_obsnums:
 
 		tmppsdspikes, tmppsddatfilt = find_spikes(tmpwhitenedpsds,thresh=tmpthresh,end_trim = tmpendtrim)
 
-		make_spikefiltered_plots_psd(tmppsddatfilt,tmpfreqs,tmptod,plotdir=tmpqcbasedir_init,thresh=tmpthresh)
+		# make_spikefiltered_plots_psd(tmppsddatfilt,tmpfreqs,tmptod,plotdir=None,thresh=tmpthresh)
 
 		allpsdspikeind = []
 		allpsdspikefreq = []
@@ -505,7 +514,7 @@ for obsnum in all_obsnums:
 		tmptod['signal'] = notchfiltdata
 
 
-		mastercuts = totalpsdcuts & despikecutmask & jump_cut_mask & numberofspikescut & totalcmcuts
+		mastercuts = totalpsdcuts & totaldespike & jump_cut_mask & numberofspikescut & totalcmcuts
 
 		mastercuts_dict = {}
 		mastercuts_dict['master_cuts'] = mastercuts
