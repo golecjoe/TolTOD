@@ -432,132 +432,265 @@ def make_final_tod_plots(tod, cutdict, plotdir=None):
 			plotfile = plotdir / f"signal_uid_{i}.png"
 			plt.savefig(plotfile, bbox_inches='tight')
 		plt.close()
+	# if good_signal.size == 0 or good_signal.shape[0] == 0:
+	# 	plt.figure()
 
-	plt.figure()
+	# 	plt.text(
+	#         0.5, 0.5,
+	#         "NO GOOD DETECTORS",
+	#         color="red",
+	#         fontsize=24,
+	#         ha="center",
+	#         va="center",
+	#         transform=plt.gca().transAxes
+	#     )
+	# 	plt.xlabel('Sample')
+	# 	plt.ylabel('Signal (mJy/beam)')
+	# 	if plotdir is not None:
+	# 		plotfile = plotdir / f"goodTODSummary.png"
+	# 		plt.savefig(plotfile, bbox_inches='tight')
+	# 	plt.close()
+	# else:
+	# 	plt.figure()
 
-	for count, i in enumerate(tod['apt_uid']):
-		if cutdict['master_cuts'][count]:
-			plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
-	plt.plot(np.median(tod['signal'][cutdict['master_cuts'], :],axis=0),c='k')
-	plt.xlabel('Sample')
-	plt.ylabel('Signal (mJy/beam)')
-	if plotdir is not None:
-		plotfile = plotdir / f"goodTODSummary.png"
-		plt.savefig(plotfile, bbox_inches='tight')
-	plt.close()
+	# 	for count, i in enumerate(tod['apt_uid']):
+	# 		if cutdict['master_cuts'][count]:
+	# 			plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
+	# 	plt.plot(np.median(tod['signal'][cutdict['master_cuts'], :],axis=0),c='k')
+	# 	plt.xlabel('Sample')
+	# 	plt.ylabel('Signal (mJy/beam)')
+	# 	if plotdir is not None:
+	# 		plotfile = plotdir / f"goodTODSummary.png"
+	# 		plt.savefig(plotfile, bbox_inches='tight')
+	# 	plt.close()
 
-	plt.figure()
 
-	for count, i in enumerate(tod['apt_uid']):
-		if not cutdict['master_cuts'][count]:
-			plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
-	plt.plot(np.median(tod['signal'][~cutdict['master_cuts'], :],axis=0),c='k')
+	# plt.figure()
 
-	plt.xlabel('Sample')
-	plt.ylabel('Signal (mJy/beam)')
-	if plotdir is not None:
-		plotfile = plotdir / f"badTODSummary.png"
-		plt.savefig(plotfile, bbox_inches='tight')
-	plt.close()
+	# for count, i in enumerate(tod['apt_uid']):
+	# 	if not cutdict['master_cuts'][count]:
+	# 		plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
+	# plt.plot(np.median(tod['signal'][~cutdict['master_cuts'], :],axis=0),c='k')
+
+	# plt.xlabel('Sample')
+	# plt.ylabel('Signal (mJy/beam)')
+	# if plotdir is not None:
+	# 	plotfile = plotdir / f"badTODSummary.png"
+	# 	plt.savefig(plotfile, bbox_inches='tight')
+	# plt.close()
 
 
 	good_signal = tod['signal'][cutdict['master_cuts'], :]
 
-	nsamp = good_signal.shape[1]
+	if good_signal.size == 0 or good_signal.shape[0] == 0:
+	    plt.figure(figsize=(10, 5))
 
-	# Make an x coordinate for every detector/sample value
-	x = np.tile(np.arange(nsamp), good_signal.shape[0])
-	y = good_signal.ravel()
+	    plt.text(
+	        0.5, 0.5,
+	        "NO GOOD DETECTORS",
+	        color="red",
+	        fontsize=24,
+	        ha="center",
+	        va="center",
+	        transform=plt.gca().transAxes
+	    )
 
-	plt.figure(figsize=(10, 5))
+	    plt.xlabel("Sample")
+	    plt.ylabel("Signal (mJy/beam)")
 
-	# Density of timestreams
-	# plt.hist2d(
-	#     x,
-	#     y,
-	#     bins=[500, 200],
-	#     cmap='Greys',
-	#     cmin=1
-	# )
+	    if plotdir is not None:
+	        plotfile = plotdir / "goodTODSummary_density.png"
+	        plt.savefig(plotfile, bbox_inches="tight")
 
-	plt.hist2d(
-		x,
-		y,
-		bins=[500, 200],
-		cmap='Greys',
-		norm=LogNorm()
-	)
+	    plt.close()
 
-	# Median across detectors at each sample
-	median_tod = np.median(good_signal, axis=0)
+	    plt.figure()
 
-	plt.plot(
-		np.arange(nsamp),
-		median_tod,
-		c='r',
-		lw=1.5,
-		label='Median'
-	)
+		plt.text(
+	        0.5, 0.5,
+	        "NO GOOD DETECTORS",
+	        color="red",
+	        fontsize=24,
+	        ha="center",
+	        va="center",
+	        transform=plt.gca().transAxes
+	    )
+		plt.xlabel('Sample')
+		plt.ylabel('Signal (mJy/beam)')
+		if plotdir is not None:
+			plotfile = plotdir / f"goodTODSummary.png"
+			plt.savefig(plotfile, bbox_inches='tight')
+		plt.close()
 
-	plt.xlabel('Sample')
-	plt.ylabel('Signal (mJy/beam)')
-	plt.colorbar(label='Number of detectors')
-	plt.legend()
+	else:
 
-	if plotdir is not None:
-		plotfile = plotdir / "goodTODSummary_density.png"
-		plt.savefig(plotfile, bbox_inches='tight')
+		plt.figure()
 
-	plt.close()
+		for count, i in enumerate(tod['apt_uid']):
+			if cutdict['master_cuts'][count]:
+				plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
+		plt.plot(np.median(tod['signal'][cutdict['master_cuts'], :],axis=0),c='k')
+		plt.xlabel('Sample')
+		plt.ylabel('Signal (mJy/beam)')
+		if plotdir is not None:
+			plotfile = plotdir / f"goodTODSummary.png"
+			plt.savefig(plotfile, bbox_inches='tight')
+		plt.close()
+
+		nsamp = good_signal.shape[1]
+
+		# Make an x coordinate for every detector/sample value
+		x = np.tile(np.arange(nsamp), good_signal.shape[0])
+		y = good_signal.ravel()
+
+		plt.figure(figsize=(10, 5))
+
+		# Density of timestreams
+		# plt.hist2d(
+		#     x,
+		#     y,
+		#     bins=[500, 200],
+		#     cmap='Greys',
+		#     cmin=1
+		# )
+
+		plt.hist2d(
+			x,
+			y,
+			bins=[500, 200],
+			cmap='Greys',
+			norm=LogNorm()
+		)
+
+		# Median across detectors at each sample
+		median_tod = np.median(good_signal, axis=0)
+
+		plt.plot(
+			np.arange(nsamp),
+			median_tod,
+			c='r',
+			lw=1.5,
+			label='Median'
+		)
+
+		plt.xlabel('Sample')
+		plt.ylabel('Signal (mJy/beam)')
+		plt.colorbar(label='Number of detectors')
+		plt.legend()
+
+		if plotdir is not None:
+			plotfile = plotdir / "goodTODSummary_density.png"
+			plt.savefig(plotfile, bbox_inches='tight')
+
+		plt.close()
 
 	bad_signal = tod['signal'][~cutdict['master_cuts'], :]
 
-	nsamp = bad_signal.shape[1]
+	if bad_signal.size == 0 or bad_signal.shape[0] == 0:
 
-	# Make an x coordinate for every detector/sample value
-	x = np.tile(np.arange(nsamp), bad_signal.shape[0])
-	y = bad_signal.ravel()
+		plt.figure()
 
-	plt.figure(figsize=(10, 5))
+		plt.text(
+	        0.5, 0.5,
+	        "NO BAD DETECTORS!?!",
+	        color="red",
+	        fontsize=24,
+	        ha="center",
+	        va="center",
+	        transform=plt.gca().transAxes
+	    )
+	    
+		plt.xlabel('Sample')
+		plt.ylabel('Signal (mJy/beam)')
+		if plotdir is not None:
+			plotfile = plotdir / f"badTODSummary.png"
+			plt.savefig(plotfile, bbox_inches='tight')
+		plt.close()
 
-	# Density of timestreams
-	# plt.hist2d(
-	#     x,
-	#     y,
-	#     bins=[500, 200],
-	#     cmap='Greys',
-	#     cmin=1
-	# )
 
-	plt.hist2d(
-		x,
-		y,
-		bins=[500, 200],
-		cmap='Greys',
-		norm=LogNorm()
-	)
+	    plt.figure(figsize=(10, 5))
 
-	# Median across detectors at each sample
-	median_tod = np.median(bad_signal, axis=0)
+	    plt.text(
+	        0.5, 0.5,
+	        "NO BAD DETECTORS!?!",
+	        color="red",
+	        fontsize=24,
+	        ha="center",
+	        va="center",
+	        transform=plt.gca().transAxes
+	    )
 
-	plt.plot(
-		np.arange(nsamp),
-		median_tod,
-		c='r',
-		lw=1.5,
-		label='Median'
-	)
+	    plt.xlabel("Sample")
+	    plt.ylabel("Signal (mJy/beam)")
 
-	plt.xlabel('Sample')
-	plt.ylabel('Signal (mJy/beam)')
-	plt.colorbar(label='Number of detectors')
-	plt.legend()
+	    if plotdir is not None:
+	        plotfile = plotdir / "badTODSummary_density.png"
+	        plt.savefig(plotfile, bbox_inches="tight")
 
-	if plotdir is not None:
-		plotfile = plotdir / "badTODSummary_density.png"
-		plt.savefig(plotfile, bbox_inches='tight')
+	    plt.close()
 
-	plt.close()
+	else:
+
+		plt.figure()
+
+		for count, i in enumerate(tod['apt_uid']):
+			if not cutdict['master_cuts'][count]:
+				plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
+		plt.plot(np.median(tod['signal'][~cutdict['master_cuts'], :],axis=0),c='k')
+
+		plt.xlabel('Sample')
+		plt.ylabel('Signal (mJy/beam)')
+		if plotdir is not None:
+			plotfile = plotdir / f"badTODSummary.png"
+			plt.savefig(plotfile, bbox_inches='tight')
+		plt.close()
+
+		nsamp = bad_signal.shape[1]
+
+		# Make an x coordinate for every detector/sample value
+		x = np.tile(np.arange(nsamp), bad_signal.shape[0])
+		y = bad_signal.ravel()
+
+		plt.figure(figsize=(10, 5))
+
+		# Density of timestreams
+		# plt.hist2d(
+		#     x,
+		#     y,
+		#     bins=[500, 200],
+		#     cmap='Greys',
+		#     cmin=1
+		# )
+
+		plt.hist2d(
+			x,
+			y,
+			bins=[500, 200],
+			cmap='Greys',
+			norm=LogNorm()
+		)
+
+		# Median across detectors at each sample
+		median_tod = np.median(bad_signal, axis=0)
+
+		plt.plot(
+			np.arange(nsamp),
+			median_tod,
+			c='r',
+			lw=1.5,
+			label='Median'
+		)
+
+		plt.xlabel('Sample')
+		plt.ylabel('Signal (mJy/beam)')
+		plt.colorbar(label='Number of detectors')
+		plt.legend()
+
+		if plotdir is not None:
+			plotfile = plotdir / "badTODSummary_density.png"
+			plt.savefig(plotfile, bbox_inches='tight')
+
+		plt.close()
 	
 	   
 
