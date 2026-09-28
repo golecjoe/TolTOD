@@ -483,38 +483,38 @@ def make_final_tod_plots(tod, cutdict, plotdir=None):
 	good_signal = tod['signal'][cutdict['master_cuts'], :]
 
 	if good_signal.size == 0 or good_signal.shape[0] == 0:
-	    plt.figure(figsize=(10, 5))
-
-	    plt.text(
-	        0.5, 0.5,
-	        "NO GOOD DETECTORS",
-	        color="red",
-	        fontsize=24,
-	        ha="center",
-	        va="center",
-	        transform=plt.gca().transAxes
-	    )
-
-	    plt.xlabel("Sample")
-	    plt.ylabel("Signal (mJy/beam)")
-
-	    if plotdir is not None:
-	        plotfile = plotdir / "goodTODSummary_density.png"
-	        plt.savefig(plotfile, bbox_inches="tight")
-
-	    plt.close()
-
-	    plt.figure()
+		plt.figure(figsize=(10, 5))
 
 		plt.text(
-	        0.5, 0.5,
-	        "NO GOOD DETECTORS",
-	        color="red",
-	        fontsize=24,
-	        ha="center",
-	        va="center",
-	        transform=plt.gca().transAxes
-	    )
+			0.5, 0.5,
+			"NO GOOD DETECTORS",
+			color="red",
+			fontsize=24,
+			ha="center",
+			va="center",
+			transform=plt.gca().transAxes
+		)
+
+		plt.xlabel("Sample")
+		plt.ylabel("Signal (mJy/beam)")
+
+		if plotdir is not None:
+			plotfile = plotdir / "goodTODSummary_density.png"
+			plt.savefig(plotfile, bbox_inches="tight")
+
+		plt.close()
+
+		plt.figure()
+
+		plt.text(
+			0.5, 0.5,
+			"NO GOOD DETECTORS",
+			color="red",
+			fontsize=24,
+			ha="center",
+			va="center",
+			transform=plt.gca().transAxes
+		)
 		plt.xlabel('Sample')
 		plt.ylabel('Signal (mJy/beam)')
 		if plotdir is not None:
@@ -591,15 +591,15 @@ def make_final_tod_plots(tod, cutdict, plotdir=None):
 		plt.figure()
 
 		plt.text(
-	        0.5, 0.5,
-	        "NO BAD DETECTORS!?!",
-	        color="red",
-	        fontsize=24,
-	        ha="center",
-	        va="center",
-	        transform=plt.gca().transAxes
-	    )
-	    
+			0.5, 0.5,
+			"NO BAD DETECTORS!?!",
+			color="red",
+			fontsize=24,
+			ha="center",
+			va="center",
+			transform=plt.gca().transAxes
+		)
+		
 		plt.xlabel('Sample')
 		plt.ylabel('Signal (mJy/beam)')
 		if plotdir is not None:
@@ -608,26 +608,26 @@ def make_final_tod_plots(tod, cutdict, plotdir=None):
 		plt.close()
 
 
-	    plt.figure(figsize=(10, 5))
+		plt.figure(figsize=(10, 5))
 
-	    plt.text(
-	        0.5, 0.5,
-	        "NO BAD DETECTORS!?!",
-	        color="red",
-	        fontsize=24,
-	        ha="center",
-	        va="center",
-	        transform=plt.gca().transAxes
-	    )
+		plt.text(
+			0.5, 0.5,
+			"NO BAD DETECTORS!?!",
+			color="red",
+			fontsize=24,
+			ha="center",
+			va="center",
+			transform=plt.gca().transAxes
+		)
 
-	    plt.xlabel("Sample")
-	    plt.ylabel("Signal (mJy/beam)")
+		plt.xlabel("Sample")
+		plt.ylabel("Signal (mJy/beam)")
 
-	    if plotdir is not None:
-	        plotfile = plotdir / "badTODSummary_density.png"
-	        plt.savefig(plotfile, bbox_inches="tight")
+		if plotdir is not None:
+			plotfile = plotdir / "badTODSummary_density.png"
+			plt.savefig(plotfile, bbox_inches="tight")
 
-	    plt.close()
+		plt.close()
 
 	else:
 
