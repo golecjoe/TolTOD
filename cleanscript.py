@@ -291,7 +291,7 @@ for obsnum in all_obsnums:
 
 			print('Fraction of Detectors cut in despiking = ',len(tmptod['apt_uid'][~despikecutmask])/len(tmptod['apt_uid']))
 
-			longincidentthreshmask = tmplongdespikecount<longincidentcutnum
+			longincidentthreshmask = tmplongdespikecount<=longincidentcutnum
 			print(f'Fraction of Detectors with an incidence >{longincidentthresh} seconds = ',np.sum(~longincidentthreshmask)/len(tmptod['apt_uid']))
 
 			totaldespike = despikecutmask & longincidentthreshmask

@@ -1,0 +1,89 @@
+Reading in the file
+Reading in network 0 from file:  /work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00/152390/raw/toltec_commissioning_science_152390_rtc_timestream.nc
+ndet = 555  nsamp = 30039
+Sample rate =  122.0703125
+Finished reading in the file
+/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/numpy/core/fromnumeric.py:771: UserWarning: Warning: 'partition' will ignore the 'mask' of the MaskedArray.
+  a.partition(kth, axis=axis, kind=kind, order=order)
+##########################################
+Gain Cut Fraction =  0.10810810810810811
+Offset Cut Fraction =  0.23063063063063063
+RMS Cut Fraction =  0.22882882882882882
+Fraction of Detectors cut by CM cuts =  0.3081081081081081
+##########################################
+Running Spike Finder
+Number of TODs with spike counts greater than 10.0 times the median =  252
+Fraction of TODs =  0.4540540540540541
+Spike Finder finished
+Running Despiker
+Time to despike =  0.782595157623291
+Fraction of Detectors cut in despiking =  0.0972972972972973
+Fraction of Detectors with an incidence >10.0 seconds =  1.0
+Running jump detector
+starting jump iter 1 of 2
+have filtered data, now searching for jumps
+/work/toltec/JoeyGolec/TolTOD/detection_functions.py:169: RuntimeWarning: divide by zero encountered in scalar divide
+  if np.abs(val2 / val) > rat:
+Median number of jumps =  0.0
+Fraction of Detectors Cut From Jumps =  0.005405405405405406
+starting jump iter 2 of 2
+have filtered data, now searching for jumps
+Median number of jumps =  0.0
+Fraction of Detectors Cut From Jumps =  0.005405405405405406
+Computing PSDs
+Fitting PSDs
+Fraction of Detectors cut in PSD analysis=  0.06666666666666667
+55.06 Hz: 1416 occurrences
+48.92 Hz: 1012 occurrences
+24.36 Hz: 266 occurrences
+10.03 Hz: 3 occurrences
+/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/numpy/core/fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/numpy/core/_methods.py:121: RuntimeWarning: invalid value encountered in divide
+  ret = um.true_divide(
+Traceback (most recent call last):
+  File "/work/toltec/JoeyGolec/TolTOD/cleanscript.py", line 534, in <module>
+    make_final_tod_plots(tmptod, mastercuts_dict, plotdir=tmpqcbasedir_init)
+  File "/work/toltec/JoeyGolec/TolTOD/qc_image_generation.py", line 504, in make_final_tod_plots
+    plt.colorbar(label='Number of detectors')
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/pyplot.py", line 2516, in colorbar
+    ret = gcf().colorbar(mappable, cax=cax, ax=ax, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/figure.py", line 1253, in colorbar
+    cb = cbar.Colorbar(cax, mappable, **{
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colorbar.py", line 391, in __init__
+    self._reset_locator_formatter_scale()
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colorbar.py", line 1153, in _reset_locator_formatter_scale
+    self._process_values()
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colorbar.py", line 1087, in _process_values
+    self.norm.vmin, self.norm.vmax = mtransforms.nonsingular(
+    ^^^^^^^^^^^^^^
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colors.py", line 1294, in vmin
+    self._changed()
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colors.py", line 1322, in _changed
+    self.callbacks.process('changed')
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cbook.py", line 303, in process
+    self.exception_handler(exc)
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cbook.py", line 87, in _exception_printer
+    raise exc
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cbook.py", line 298, in process
+    func(*args, **kwargs)
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cm.py", line 604, in changed
+    self.callbacks.process('changed', self)
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cbook.py", line 303, in process
+    self.exception_handler(exc)
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cbook.py", line 87, in _exception_printer
+    raise exc
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/cbook.py", line 298, in process
+    func(*args, **kwargs)
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colorbar.py", line 501, in update_normal
+    self._draw_all()
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colorbar.py", line 528, in _draw_all
+    self._process_values()
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colorbar.py", line 1091, in _process_values
+    b = self.norm.inverse(b)
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/matplotlib/colors.py", line 1802, in inverse
+    raise ValueError("Invalid vmin or vmax")
+ValueError: Invalid vmin or vmax
