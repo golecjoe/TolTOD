@@ -9,10 +9,19 @@ import numpy as np
 import time
 from scipy.signal import find_peaks
 
-all_obsnums = [152390,152392,152419,152431,152433]
+all_obsnums = [149097, 149099,149101,
+               150132, 150134, 150725,
+               150727, 150734, 150736,
+               150744, 150761, 150852,
+               150864, 151070, 151073,
+               151080, 151903, 151905,
+               152258, 152260, 152262, 
+               152264, 152478, 152480,
+               152482, 152495, 152497,
+               152499] #[152390,152392,152419,152431,152433]
 
-input_dir_base = Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
-output_dir_base = Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
+input_dir_base = Path('/work/toltec/commissioning2025-test/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu01') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
+output_dir_base = Path('/work/toltec/commissioning2025-test/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/step1') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
 
 tmpfilepath = 'data/toltec_commissioning_science_152390_rtc_timestream.nc'
 newfilepath = 'data/toltec_commissioning_science_152390_rtc_timestream_step1.nc'
@@ -41,7 +50,7 @@ longincidentcutnum = 0
 jumpthresh = 10.
 jumpsearchwidth = 10
 
-jumpiterations = 2
+jumpiterations = 1 
 
 
 despiketods = True
