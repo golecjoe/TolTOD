@@ -584,7 +584,7 @@ def make_final_tod_plots(tod, cutdict, plotdir=None):
 
 		plt.close()
 
-	bad_signal = tod['signal'][~cutdict['master_cuts'], :]
+	bad_signal = tod['original_signal'][~cutdict['master_cuts'], :]
 
 	if bad_signal.size == 0 or bad_signal.shape[0] == 0:
 
@@ -635,8 +635,8 @@ def make_final_tod_plots(tod, cutdict, plotdir=None):
 
 		for count, i in enumerate(tod['apt_uid']):
 			if not cutdict['master_cuts'][count]:
-				plt.plot(tod['signal'][count, :],c='grey',alpha=0.2)
-		plt.plot(np.median(tod['signal'][~cutdict['master_cuts'], :],axis=0),c='k')
+				plt.plot(tod['original_signal'][count, :],c='grey',alpha=0.2)
+		plt.plot(np.median(tod['original_signal'][~cutdict['master_cuts'], :],axis=0),c='k')
 
 		plt.xlabel('Sample')
 		plt.ylabel('Signal (mJy/beam)')
