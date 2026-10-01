@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/work/toltec/JoeyGolec/TolTOD/cleanscript.py", line 65, in <module>
+    initialncfilepath = input_dir_base / f'{obsnum}/raw/toltec_commissioning_'+obstype+'_{obsnum}_rtc_timestream.nc'
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for +: 'PosixPath' and 'str'

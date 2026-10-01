@@ -18,10 +18,11 @@ all_obsnums = [149097, 149099,149101,
                152258, 152260, 152262, 
                152264, 152478, 152480,
                152482, 152495, 152497,
-               152499] #[152390,152392,152419,152431,152433]
+               152499, 152820, 152822,
+               152829, 152836, 152843] #[152390,152392,152419,152431,152433]
 
-input_dir_base = Path('/work/toltec/commissioning2025-test/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu01') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
-output_dir_base = Path('/work/toltec/commissioning2025-test/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/step1') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
+input_dir_base = Path('/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
+output_dir_base = Path('/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/step1') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
 
 tmpfilepath = 'data/toltec_commissioning_science_152390_rtc_timestream.nc'
 newfilepath = 'data/toltec_commissioning_science_152390_rtc_timestream_step1.nc'
@@ -50,7 +51,9 @@ longincidentcutnum = 0
 jumpthresh = 10.
 jumpsearchwidth = 10
 
-jumpiterations = 1 
+jumpiterations = 1
+
+obstype = 'science'
 
 
 despiketods = True
@@ -60,8 +63,8 @@ total_t1 = time.time()
 
 
 for obsnum in all_obsnums:
-	initialncfilepath = input_dir_base / f'{obsnum}/raw/toltec_commissioning_science_{obsnum}_rtc_timestream.nc'
-	finalncfilepath = output_dir_base / f'{obsnum}/raw/toltec_commissioning_science_{obsnum}_rtc_timestream.nc'
+	initialncfilepath = input_dir_base / f'{obsnum}/raw/toltec_commissioning_{obstype}_{obsnum}_rtc_timestream.nc'
+	finalncfilepath = output_dir_base / f'{obsnum}/raw/toltec_commissioning_{obstype}_{obsnum}_rtc_timestream.nc'
 
 	outputdir = Path(output_dir_base / f'{obsnum}/raw/')
 	outputdir.mkdir(parents=True, exist_ok=True)

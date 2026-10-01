@@ -1,0 +1,12 @@
+Reading in the file
+Reading in network 0 from file:  /work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00/149097/raw/toltec_commissioning_pointing_149097_rtc_timestream.nc
+Traceback (most recent call last):
+  File "/work/toltec/JoeyGolec/TolTOD/cleanscript.py", line 86, in <module>
+    tmptod = read_in_nw_from_netCDF(initialncfilepath,tmpnw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/toltec/JoeyGolec/TolTOD/tod_io.py", line 12, in read_in_nw_from_netCDF
+    with nc.Dataset(filepath, "r") as data:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2521, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2158, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: '/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00/149097/raw/toltec_commissioning_pointing_149097_rtc_timestream.nc'

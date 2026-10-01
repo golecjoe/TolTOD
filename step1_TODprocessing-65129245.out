@@ -1,0 +1,136 @@
+Reading in the file
+Reading in network 0 from file:  /work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00/149097/raw/toltec_commissioning_science_149097_rtc_timestream.nc
+ndet = 534  nsamp = 150142
+Sample rate =  122.0703125
+Finished reading in the file
+/work/toltec/toltec_shared/toltec_astro/venvs/toltec_20241023/lib/python3.12/site-packages/numpy/core/fromnumeric.py:771: UserWarning: Warning: 'partition' will ignore the 'mask' of the MaskedArray.
+  a.partition(kth, axis=axis, kind=kind, order=order)
+##########################################
+Gain Cut Fraction =  0.07303370786516854
+Offset Cut Fraction =  0.1891385767790262
+RMS Cut Fraction =  0.1853932584269663
+Fraction of Detectors cut by CM cuts =  0.23595505617977527
+##########################################
+Running Spike Finder
+Number of TODs with spike counts greater than 10.0 times the median =  28
+Fraction of TODs =  0.052434456928838954
+Spike Finder finished
+Running Despiker
+Time to despike =  4.88895845413208
+Fraction of Detectors cut in despiking =  0.08614232209737828
+Fraction of Detectors with an incidence >10.0 seconds =  0.11610486891385768
+Running jump detector
+starting jump iter 1 of 1
+have filtered data, now searching for jumps
+Median number of jumps =  0.0
+Fraction of Detectors Cut From Jumps =  0.0018726591760299626
+Computing PSDs
+Fitting PSDs
+Fraction of Detectors cut in PSD analysis=  0.04868913857677903
+58.75 Hz: 17948 occurrences
+29.68 Hz: 13135 occurrences
+19.45 Hz: 3364 occurrences
+10.85 Hz: 2313 occurrences
+59.57 Hz: 1863 occurrences
+Total Fraction of Detectors cut =  0.2902621722846442
+Replacing Data for 534 Detectors
+Reading in the file
+Reading in network 1 from file:  /work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00/149097/raw/toltec_commissioning_science_149097_rtc_timestream.nc
+ndet = 436  nsamp = 150142
+Sample rate =  122.0703125
+Finished reading in the file
+##########################################
+Gain Cut Fraction =  0.09862385321100918
+Offset Cut Fraction =  0.24311926605504589
+RMS Cut Fraction =  0.22935779816513763
+Fraction of Detectors cut by CM cuts =  0.30963302752293576
+##########################################
+Running Spike Finder
+Number of TODs with spike counts greater than 10.0 times the median =  25
+Fraction of TODs =  0.05733944954128441
+Spike Finder finished
+Running Despiker
+Time to despike =  4.01609206199646
+Fraction of Detectors cut in despiking =  0.10550458715596331
+Fraction of Detectors with an incidence >10.0 seconds =  0.12385321100917432
+Running jump detector
+starting jump iter 1 of 1
+have filtered data, now searching for jumps
+Median number of jumps =  0.0
+Fraction of Detectors Cut From Jumps =  0.0045871559633027525
+Computing PSDs
+Fitting PSDs
+Fraction of Detectors cut in PSD analysis=  0.07110091743119266
+48.92 Hz: 12508 occurrences
+29.68 Hz: 7614 occurrences
+10.85 Hz: 3443 occurrences
+19.45 Hz: 2485 occurrences
+39.10 Hz: 1237 occurrences
+Total Fraction of Detectors cut =  0.36009174311926606
+Replacing Data for 436 Detectors
+Reading in the file
+Reading in network 2 from file:  /work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00/149097/raw/toltec_commissioning_science_149097_rtc_timestream.nc
+ndet = 401  nsamp = 150142
+Sample rate =  122.0703125
+Finished reading in the file
+##########################################
+Gain Cut Fraction =  0.10473815461346633
+Offset Cut Fraction =  0.18703241895261846
+RMS Cut Fraction =  0.19451371571072318
+Fraction of Detectors cut by CM cuts =  0.2793017456359102
+##########################################
+Running Spike Finder
+Number of TODs with spike counts greater than 10.0 times the median =  91
+Fraction of TODs =  0.22693266832917705
+Spike Finder finished
+Running Despiker
+Time to despike =  2.869162082672119
+Fraction of Detectors cut in despiking =  0.1396508728179551
+Fraction of Detectors with an incidence >10.0 seconds =  0.19950124688279303
+Running jump detector
+starting jump iter 1 of 1
+have filtered data, now searching for jumps
+Median number of jumps =  0.0
+Fraction of Detectors Cut From Jumps =  0.012468827930174564
+Computing PSDs
+Fitting PSDs
+Fraction of Detectors cut in PSD analysis=  0.07231920199501247
+29.68 Hz: 4692 occurrences
+48.92 Hz: 2656 occurrences
+10.85 Hz: 1574 occurrences
+58.75 Hz: 1354 occurrences
+59.57 Hz: 528 occurrences
+Total Fraction of Detectors cut =  0.4314214463840399
+Replacing Data for 401 Detectors
+Reading in the file
+Reading in network 3 from file:  /work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00/149097/raw/toltec_commissioning_science_149097_rtc_timestream.nc
+ndet = 457  nsamp = 150142
+Sample rate =  122.0703125
+Finished reading in the file
+##########################################
+Gain Cut Fraction =  0.087527352297593
+Offset Cut Fraction =  0.18161925601750548
+RMS Cut Fraction =  0.18599562363238512
+Fraction of Detectors cut by CM cuts =  0.22975929978118162
+##########################################
+Running Spike Finder
+Number of TODs with spike counts greater than 10.0 times the median =  10
+Fraction of TODs =  0.02188183807439825
+Spike Finder finished
+Running Despiker
+Time to despike =  4.432260990142822
+Fraction of Detectors cut in despiking =  0.06564551422319474
+Fraction of Detectors with an incidence >10.0 seconds =  0.08971553610503283
+Running jump detector
+starting jump iter 1 of 1
+have filtered data, now searching for jumps
+Median number of jumps =  0.0
+Fraction of Detectors Cut From Jumps =  0.00437636761487965
+Computing PSDs
+Fitting PSDs
+Fraction of Detectors cut in PSD analysis=  0.07221006564551423
+29.68 Hz: 11213 occurrences
+58.75 Hz: 8354 occurrences
+10.85 Hz: 5495 occurrences
+48.92 Hz: 5415 occurrences
+59.57 Hz: 2033 occurrences
