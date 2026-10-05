@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 from scipy.signal import iirnotch, filtfilt
 from scipy.optimize import least_squares
+import pandas as pd
 
 def _linfit_2mat(dat, mat1, mat2):
 	np1 = mat1.shape[1]
@@ -348,6 +349,18 @@ def fit_gain_and_offset_to_cm(tod,plotdir=None):
 
 
 	return gain_factors,offset_factors,minrms
+
+def make_output_goodbaddets(tod,filepathbase):
+	df = pd.DataFrame({
+    'apt_uid': tod['apt_uid'],
+    'apt_x_t': tod['apt_x_t'],
+    'apt_y_t': tod['apt_y_t'],
+    'new_apt_flags': tod['new_apt_flags'],
+	})
+
+	df.to_csv(filepathbase / 'cut_summary.csv', index=False)
+
+
 
 
 

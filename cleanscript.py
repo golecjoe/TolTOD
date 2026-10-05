@@ -9,20 +9,26 @@ import numpy as np
 import time
 from scipy.signal import find_peaks
 
-all_obsnums = [149097, 149099,149101,
-               150132, 150134, 150725,
-               150727, 150734, 150736,
-               150744, 150761, 150852,
-               150864, 151070, 151073,
-               151080, 151903, 151905,
-               152258, 152260, 152262, 
-               152264, 152478, 152480,
-               152482, 152495, 152497,
-               152499, 152820, 152822,
-               152829, 152836, 152843] #[152390,152392,152419,152431,152433]
+# all_obsnums = [149097, 149099,149101,
+#                150132, 150134, 150725,
+#                150727, 150734, 150736,
+#                150744, 150761, 150852,
+#                150864, 151070, 151073,
+#                151080, 151903, 151905,
+#                152258, 152260, 152262, 
+#                152264, 152478, 152480,
+#                152482, 152495, 152497,
+#                152499, 152820, 152822,
+#                152829, 152836, 152843] #[152390,152392,152419,152431,152433]
 
-input_dir_base = Path('/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
-output_dir_base = Path('/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/step1') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
+all_obsnums = [157224]
+
+# input_dir_base = Path('/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/redu00') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
+# output_dir_base = Path('/work/toltec/JoeyGolec/testground/2025-C1-COM-05/jgolec/MACS0717.5+3745/reduced_TODs/step1') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
+
+input_dir_base = Path('/Users/golecjoe/Documents/Projects/TolTOD/data') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/redu00')
+output_dir_base = Path('/Users/golecjoe/Documents/Projects/TolTOD/data_step1') #Path('/work/toltec/commissioning2025-test/2025-C1-COM-01/jgolec/NGC4449/reduced_TODs/step1')
+
 
 tmpfilepath = 'data/toltec_commissioning_science_152390_rtc_timestream.nc'
 newfilepath = 'data/toltec_commissioning_science_152390_rtc_timestream_step1.nc'
@@ -53,7 +59,7 @@ jumpsearchwidth = 10
 
 jumpiterations = 1
 
-obstype = 'science'
+obstype = 'pointing'
 
 
 despiketods = True
@@ -566,6 +572,8 @@ for obsnum in all_obsnums:
 		plt.savefig(plotfile,bbox_inches='tight')
 		plt.close()
 
+		make_output_goodbaddets(tmptod,tmpqcbasedir)
+
 		make_new_timestream_nc_file(initialncfilepath,finalncfilepath,tmptod)
 
 		# tmpqcbasedir_init = Path(f'outputs/obs_{tmpobsnum}/qc/nw_{tmpnw}/notchfiltered_tods/')
@@ -595,6 +603,11 @@ for obsnum in all_obsnums:
 		# tmpAwn, tmpnu0, tmpalpha, tmpwhitenedpsds = fit_psds(tmptod,tmppsd,tmpfreqs,plotdir=tmpqcbasedir_init)
 
 		# make_psd_qc_plots(tmptod,tmpAwn,tmpnu0,tmpalpha,tmpqcbasedir_init)
+
+
+	observation_qcdir = output_dir_base / f'outputs/obs_{obsnum}/qc'
+	make_array_cut_summary(observation_qcdir)
+	make_qc_summary_pdfs(observation_qcdir)
 
 
 print('Total Time = ',(time.time()-total_t1)/3600., ' Hours')

@@ -8,3 +8,4 @@ venv/
 # Data/output directories
 data/
 outputs/
+data_step1/
